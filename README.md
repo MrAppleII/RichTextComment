@@ -16,6 +16,11 @@ const IndexPage = () => (
   </PageBody>
 )
 ```
+# Converting JSON back to text 
+
+```
+  editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(this.props.note.content)))
+```
 
 # WIP 
 
