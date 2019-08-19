@@ -1,5 +1,5 @@
 import React from "react"
-
+import styled from 'styled-components'
 class HeaderStyleDropdown extends React.Component {
   onToggle = event => {
     let value = event.target.value
@@ -8,14 +8,18 @@ class HeaderStyleDropdown extends React.Component {
 
   render() {
     return (
-      <select value={this.props.active} onChange={this.onToggle}>
+      <Selector value={this.props.active} onChange={this.onToggle}>
         <option disabled={true} value="">Header Levels</option>
         {this.props.headerOptions.map(heading => {
           return <option key={heading.style} value={heading.style}>{heading.label}</option>
         })}
-      </select>
+      </Selector>
     )
   }
 }
+const Selector = styled.select`
+flex-shrink:1;
+width:auto;
+`
 
 export default HeaderStyleDropdown

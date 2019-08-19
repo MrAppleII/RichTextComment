@@ -18,13 +18,19 @@ export const linkStrategy = (contentBlock, callback, contentState) => {
 export const Link = props => {
 	const { contentState, entityKey } = props;
 	const { url } = contentState.getEntity(entityKey).getData();
+	var finalUrl = ""
+	if(url.startsWith("https://") || url.startsWith("http://")){
+		finalUrl = url
+	}else{
+		finalUrl = "https://"+url
+	}
+	
 	return (
 		<a
-			className="link"
-			href={url}
+			href={finalUrl}
 			rel="noopener noreferrer"
 			target="_blank"
-			aria-label={url}
+			aria-label={finalUrl}
 		>
 			{props.children}
 		</a>

@@ -14,7 +14,15 @@ class BlockStyleButton extends React.Component {
 
     return (
       <BlockLabel className={className} onClick={this.onToggle}>
-        {this.props.label}
+       {(this.props.logoPath!=="" && this.props.logoPath !== undefined)?
+    (<svg width={this.props.iconSize+`px`} height={this.props.iconSize+`px`} version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g>
+    {this.props.logoPath}
+    </g>
+   </svg>)
+    :this.props.label
+    }
+        
       </BlockLabel>
     )
   }
@@ -22,11 +30,20 @@ class BlockStyleButton extends React.Component {
 const BlockLabel = styled.button`
   border: none;
   outline: none;
-  text-align: center;
-  width: 40px;
-  border-right: 1px solid rgba(237, 237, 237, 1);
-  border-left: 1px solid rgba(237, 237, 237, 0);
+ 
+ 
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 
+   padding: 0;
+
+  min-width: 30px;
+  height: 30px;
+  margin: 0 2px;
+ border:0;
+    border-radius:3px;
   cursor: pointer;
   transition: background 0.1s ease-out;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -38,9 +55,7 @@ const BlockLabel = styled.button`
   &.active{
     background: rgba(225, 225, 225, 1);
   }
-  &.lastItem {
-    border-right: 1px solid rgba(237, 237, 237, 0);
-  }
+ 
 
 `
 
